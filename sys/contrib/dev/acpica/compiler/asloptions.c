@@ -900,7 +900,7 @@ AslDoOptions (
         case 'd':
 
             printf (ACPI_COMMON_SIGNON (ASL_COMPILER_NAME));
-            printf (ACPI_COMMON_BUILD_TIME);
+//            printf (ACPI_COMMON_BUILD_TIME);
             exit (0);
 
         case 'e':

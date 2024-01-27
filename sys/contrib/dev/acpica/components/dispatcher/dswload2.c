@@ -157,7 +157,7 @@
 #include <contrib/dev/acpica/include/acinterp.h>
 #include <contrib/dev/acpica/include/acnamesp.h>
 #include <contrib/dev/acpica/include/acevents.h>
-#ifdef ACPI_EXEC_APP
+#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
 #include "aecommon.h"
 #endif
 
@@ -535,8 +535,8 @@ AcpiDsLoad2EndOp (
     UINT32                  i;
     UINT8                   RegionSpace;
 #ifdef ACPI_EXEC_APP
-    ACPI_OPERAND_OBJECT     *ObjDesc;
-    char                    *Namepath;
+//    ACPI_OPERAND_OBJECT     *ObjDesc;
+//    char                    *Namepath;
 #endif
 
 
@@ -783,7 +783,7 @@ AcpiDsLoad2EndOp (
                 goto Cleanup;
             }
 
-#ifdef ACPI_EXEC_APP
+#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
             /*
              * AcpiExec support for namespace initialization file (initialize
              * Name opcodes in this code.)

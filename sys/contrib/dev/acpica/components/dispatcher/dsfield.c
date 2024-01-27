@@ -157,7 +157,7 @@
 #include <contrib/dev/acpica/include/acnamesp.h>
 #include <contrib/dev/acpica/include/acparser.h>
 
-#ifdef ACPI_EXEC_APP
+#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
 #include "aecommon.h"
 #endif
 
@@ -439,9 +439,9 @@ AcpiDsGetFieldNames (
     ACPI_PARSE_OBJECT       *Child;
 
 #ifdef ACPI_EXEC_APP
-    ACPI_OPERAND_OBJECT     *ResultDesc;
-    ACPI_OPERAND_OBJECT     *ObjDesc;
-    char                    *NamePath;
+//    ACPI_OPERAND_OBJECT     *ResultDesc;
+//    ACPI_OPERAND_OBJECT     *ObjDesc;
+//    char                    *NamePath;
 #endif
 
 
@@ -578,7 +578,7 @@ AcpiDsGetFieldNames (
                     {
                         return_ACPI_STATUS (Status);
                     }
-#ifdef ACPI_EXEC_APP
+#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
                     NamePath = AcpiNsGetExternalPathname (Info->FieldNode);
                     if (ACPI_SUCCESS (AeLookupInitFileEntry (NamePath, &ObjDesc)))
                     {
