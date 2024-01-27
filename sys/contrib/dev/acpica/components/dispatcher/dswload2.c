@@ -8,7 +8,7 @@
  *
  * 1. Copyright Notice
  *
- * Some or all of this work - Copyright (c) 1999 - 2022, Intel Corp.
+ * Some or all of this work - Copyright (c) 1999 - 2023, Intel Corp.
  * All rights reserved.
  *
  * 2. License
@@ -157,7 +157,7 @@
 #include <contrib/dev/acpica/include/acinterp.h>
 #include <contrib/dev/acpica/include/acnamesp.h>
 #include <contrib/dev/acpica/include/acevents.h>
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
 #include "aecommon.h"
 #endif
 
@@ -534,7 +534,7 @@ AcpiDsLoad2EndOp (
     ACPI_NAMESPACE_NODE     *NewNode;
     UINT32                  i;
     UINT8                   RegionSpace;
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
     ACPI_OPERAND_OBJECT     *ObjDesc;
     char                    *Namepath;
 #endif
@@ -783,7 +783,7 @@ AcpiDsLoad2EndOp (
                 goto Cleanup;
             }
 
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
             /*
              * AcpiExec support for namespace initialization file (initialize
              * Name opcodes in this code.)

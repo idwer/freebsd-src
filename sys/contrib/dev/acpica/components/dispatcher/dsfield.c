@@ -8,7 +8,7 @@
  *
  * 1. Copyright Notice
  *
- * Some or all of this work - Copyright (c) 1999 - 2022, Intel Corp.
+ * Some or all of this work - Copyright (c) 1999 - 2023, Intel Corp.
  * All rights reserved.
  *
  * 2. License
@@ -157,7 +157,7 @@
 #include <contrib/dev/acpica/include/acnamesp.h>
 #include <contrib/dev/acpica/include/acparser.h>
 
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
 #include "aecommon.h"
 #endif
 
@@ -438,7 +438,7 @@ AcpiDsGetFieldNames (
     UINT64                  Position;
     ACPI_PARSE_OBJECT       *Child;
 
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
     ACPI_OPERAND_OBJECT     *ResultDesc;
     ACPI_OPERAND_OBJECT     *ObjDesc;
     char                    *NamePath;
@@ -578,7 +578,7 @@ AcpiDsGetFieldNames (
                     {
                         return_ACPI_STATUS (Status);
                     }
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
                     NamePath = AcpiNsGetExternalPathname (Info->FieldNode);
                     if (ACPI_SUCCESS (AeLookupInitFileEntry (NamePath, &ObjDesc)))
                     {

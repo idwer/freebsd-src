@@ -8,7 +8,7 @@
  *
  * 1. Copyright Notice
  *
- * Some or all of this work - Copyright (c) 1999 - 2022, Intel Corp.
+ * Some or all of this work - Copyright (c) 1999 - 2023, Intel Corp.
  * All rights reserved.
  *
  * 2. License
@@ -314,11 +314,6 @@ AcpiInfo (
 {
     va_list                 ArgList;
 
-#ifdef _KERNEL
-    /* Temporarily hide too verbose printfs. */
-    if (!bootverbose)
-	return;
-#endif
 
     ACPI_MSG_REDIRECT_BEGIN;
     AcpiOsPrintf (ACPI_MSG_INFO);

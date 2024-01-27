@@ -9,7 +9,7 @@
  *
  * 1. Copyright Notice
  *
- * Some or all of this work - Copyright (c) 1999 - 2022, Intel Corp.
+ * Some or all of this work - Copyright (c) 1999 - 2023, Intel Corp.
  * All rights reserved.
  *
  * 2. License
@@ -158,7 +158,7 @@
 #include <contrib/dev/acpica/include/acinterp.h>
 #include <contrib/dev/acpica/include/acnamesp.h>
 #include <contrib/dev/acpica/include/acdebug.h>
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
 #include "aecommon.h"
 #endif
 
@@ -506,7 +506,7 @@ AcpiDsExecEndOp (
     UINT32                  OpClass;
     ACPI_PARSE_OBJECT       *NextOp;
     ACPI_PARSE_OBJECT       *FirstArg;
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
     char                    *Namepath;
     ACPI_OPERAND_OBJECT     *ObjDesc;
 #endif
@@ -569,9 +569,11 @@ AcpiDsExecEndOp (
 
         /*
          * All opcodes require operand resolution, with the only exceptions
-         * being the ObjectType and SizeOf operators.
+         * being the ObjectType and SizeOf operators as well as opcodes that
+         * take no arguments.
          */
-        if (!(WalkState->OpInfo->Flags & AML_NO_OPERAND_RESOLVE))
+        if (!(WalkState->OpInfo->Flags & AML_NO_OPERAND_RESOLVE) &&
+            (WalkState->OpInfo->Flags & AML_HAS_ARGS))
         {
             /* Resolve all operands */
 
@@ -727,7 +729,7 @@ AcpiDsExecEndOp (
                 break;
             }
 
-#if !defined(ACPI_DB_APP) && defined(ACPI_EXEC_APP)
+#ifdef ACPI_EXEC_APP
             /*
              * AcpiExec support for namespace initialization file (initialize
              * BufferFields in this code.)

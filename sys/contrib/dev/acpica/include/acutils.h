@@ -8,7 +8,7 @@
  *
  * 1. Copyright Notice
  *
- * Some or all of this work - Copyright (c) 1999 - 2022, Intel Corp.
+ * Some or all of this work - Copyright (c) 1999 - 2023, Intel Corp.
  * All rights reserved.
  *
  * 2. License
@@ -196,6 +196,8 @@ extern const char                       *AcpiGbl_SbDecode[];
 extern const char                       *AcpiGbl_FcDecode[];
 extern const char                       *AcpiGbl_PtDecode[];
 extern const char                       *AcpiGbl_PtypDecode[];
+extern const char                       *AcpiGbl_ClockInputMode[];
+extern const char                       *AcpiGbl_ClockInputScale[];
 #endif
 
 /*
@@ -1288,7 +1290,7 @@ AcpiAhMatchUuid (
 /*
  * utuuid -- UUID support functions
  */
-#if (defined ACPI_ASL_COMPILER || defined ACPI_DISASSEMBLER || defined ACPI_EXEC_APP || defined ACPI_HELP_APP)
+#if (defined ACPI_ASL_COMPILER || defined ACPI_EXEC_APP || defined ACPI_HELP_APP)
 void
 AcpiUtConvertStringToUuid (
     char                    *InString,
